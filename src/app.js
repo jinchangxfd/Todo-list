@@ -11,7 +11,9 @@ const {
     deleteAccount
 } = require('./controller')
 
-app.get("/accounts/:id", getAccount)
+app.locals.dataFilePath = "./data.json"
+
+//app.get("/accounts/:id", getAccount)
 app.get("/accounts", getAllAccounts)
 
 /*app.get('/accounts', (req, res) => fs.readFile('./data.json','utf-8',(err,data)=>{
