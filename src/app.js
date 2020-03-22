@@ -1,5 +1,4 @@
 const express = require('express')
-const fs =require('fs')
 const app = express()
 const port = 3000
 
@@ -7,11 +6,12 @@ const {
     getAccount,
     getAllAccounts,
     createAccount,
-    updateAccount,
     deleteAccount
 } = require('./controller')
 
 app.locals.dataFilePath = "./data.json"
+
+app.use(express.json())
 
 app.get("/api/tasks/:id", getAccount)
 
@@ -23,3 +23,5 @@ app.delete("/api/tasks/:id", deleteAccount)
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+exports.app = app

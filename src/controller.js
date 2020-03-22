@@ -36,7 +36,8 @@ exports.deleteAccount = async (req, res) => {
   const id = req.params.id
   const file = await asyncReadFile(req.app.locals.dataFilePath)
   const accounts = JSON.parse(file)
-  const newAccounts = accounts.filter(v => v.id !== id)
+  const newAccounts = accounts.filter(v => v.id != id)
+  res.send(newAccounts)
   if (newAccounts.length === accounts.length) {
     res.status(404).send()
   } else {
