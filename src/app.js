@@ -13,15 +13,13 @@ const {
 
 app.locals.dataFilePath = "./data.json"
 
-//app.get("/accounts/:id", getAccount)
-app.get("/accounts", getAllAccounts)
+app.get("/api/tasks/:id", getAccount)
 
-/*app.get('/accounts', (req, res) => fs.readFile('./data.json','utf-8',(err,data)=>{
-    if(err){
-        res.status(500).send()
-    }else{
-        res.send(JSON.parse(data))
-    }
-}))*/
+app.get("/api/tasks/", getAllAccounts)
+
+app.post("/api/tasks/", createAccount)
+
+app.delete("/api/tasks/:id", deleteAccount)
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
