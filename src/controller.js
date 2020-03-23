@@ -8,7 +8,7 @@ const {
 exports.getAccount = async (req, res) => {
   const id = req.params.id
   const file = await asyncReadFile(req.app.locals.dataFilePath)
-  const accounts = JSON.parse(file).filter(v => v.id === id)
+  const accounts = JSON.parse(file).filter(v => v.id == id)
   accounts.length == 0 ? res.status(404).send() : res.send(accounts[0])
 }
 
